@@ -14,6 +14,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// get route for index.html file
+app.get('/', (req, res) =>
+    res.sendFile(path.join(__dirname,'/public/index.html'))
+);
+
 // get route for notes.html file
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname,'/public/notes.html'))
@@ -65,11 +70,6 @@ app.post('/api/notes', (req, res) => {
     res.error('Error in adding note');
   }
 });
-
-// get route for index.html file - run last since it's a wild card
-app.get('/*', (req, res) =>
-    res.sendFile(path.join(__dirname,'/public/index.html'))
-);
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
