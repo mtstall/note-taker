@@ -69,24 +69,25 @@ app.post("/api/notes", (req, res) => {
   }
 });
 
-// defining rdeleteNote
-const deleteNote = (id, parsedData) => {
+// delete notes
+function deleteNote(id, parsedData) {
   console.log(parsedData);
-  for (let i = 0; i < parsedData.length; i++) {
-    let note = parsedData[i];
+  for (let i = 0; i< parsedData.length; i++){
+      let note = parsedData[i];
 
-    if (note.id == id) {
-      parsedData.splice(i, 1);
-      console.log(parsedData);
+      if (note.id == id) {
+          parsedData.splice(i, 1);
+          console.log(parsedData);
 
-      break;
-    }
+
+          break;
+      }
   }
-  return parsedData;
-};
+return parsedData;
+}
 
 const readAndDelete = (id, file) => {
-  fs.readFileSync(file, 'utf8', (err, data) => {
+  fs.readFile(file, 'utf8', (err, data) => {
       if (err) {
       console.error(err);
   } else {
@@ -97,8 +98,8 @@ const readAndDelete = (id, file) => {
 });
 };
 
-// delete route for a note by id - id is a url parameter
-app.delete("/api/notes/:id", (req, res) => {
+
+app.delete('/api/notes/:id', (req, res) => {
   readAndDelete(req.params.id, './db/db.json');
   res.json(true);
 });
