@@ -14,6 +14,7 @@ This application allows users to store notes. Saved notes will appear along the 
 Run the 'npm install' command to install everything required to run this app. This includes express, path, fs, and util.
 ## Usage
 Use this application to keep track of notes. Click the 'Get Started' button to begin.
+<img src="./public/assets/images/note-taker-app-screenshot.png" alt = "screenshot of deployed note taker app site"/>
 ## License
 This application is covered under the MIT license.
 ## Contributing
